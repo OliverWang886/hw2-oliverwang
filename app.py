@@ -13,7 +13,7 @@ Instructions:
   2. Task
   3. Deadline
   4. Notes
-- Only include details that are clearly supported by the input.
+- Only include details clearly supported by the input.
 - Do not invent missing names, dates, or conclusions.
 - If information is unclear, write "unclear."
 - If the notes contain sensitive, confidential, HR, or legal issues, add: "Human review recommended."
@@ -41,7 +41,7 @@ Convert these meeting notes into structured action items.
 """
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=prompt,
     )
     return response.text
@@ -51,8 +51,7 @@ def main():
         print("Usage: py app.py <input_file>")
         sys.exit(1)
 
-    input_file = sys.argv[1]
-    notes = load_input(input_file)
+    notes = load_input(sys.argv[1])
     output = run_llm(notes)
 
     print("\n=== INPUT ===\n")

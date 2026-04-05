@@ -21,9 +21,11 @@ I created a small evaluation set with five representative inputs, including norm
 The prompt iterations improved the design in three ways. First, they made the output more structured. Second, they reduced the chance of unsupported details being added. Third, they made the workflow more cautious in situations where human review would still be necessary.
 
 ## Current Prototype Status
-I built a Python prototype that reads meeting notes from a text file and sends them to the Gemini API to generate structured action items. The script runs from the command line and is designed to make a real LLM API call.
+I built a Python prototype that reads meeting notes from a text file and sends them to the Gemini API to generate structured action items. The script runs from the command line and makes a real LLM API call.
 
-During testing, the script successfully reached the live API call stage, but repeated testing hit the free-tier quota and rate limit. This produced a 429 RESOURCE_EXHAUSTED error. As a result, the prototype demonstrated the intended technical workflow, but output generation was not always consistently available under the free-tier constraints.
+During development, I encountered several issues, including model selection problems and free-tier quota limits. After updating the model choice and enabling billing, the prototype was able to successfully return structured action items from the Gemini API.
+
+This means the final prototype successfully demonstrated the intended workflow: reading an input file, sending the content to a live LLM API, and returning a structured output that could support a business writing task.
 
 ## Remaining Failure Modes
 This prototype still has important limitations. If the notes are vague, incomplete, or politically sensitive, the model may still produce output that appears cleaner or more certain than the source text justifies. It also depends on live API access, which means reproducibility can be affected by quota availability.
@@ -31,6 +33,6 @@ This prototype still has important limitations. If the notes are vague, incomple
 The workflow should not be trusted without human review in cases involving HR decisions, legal issues, confidential topics, or unclear ownership and deadlines. Even in normal cases, a human should verify the generated action items before sharing or acting on them.
 
 ## Deployment Recommendation
-I would recommend deploying this workflow only as a draft-generation tool, not as a fully automated system. It could be useful for internal productivity if a human reviewer checks the output before it is used.
+I would recommend deploying this workflow only as a draft-generation tool, not as a fully automated system. It can be useful for internal productivity if a human reviewer checks the output before it is used.
 
-In a real deployment setting, the system would need more stable API quota access, clearer review procedures, and stronger controls for sensitive cases. Without those safeguards, I would not recommend relying on it as a final decision-making tool.
+The prototype performs well on simple meeting-note cases, but it still requires human review for vague, incomplete, confidential, HR-related, or legally sensitive content. In a real deployment setting, the system would also need clear review procedures and monitoring for output quality.
