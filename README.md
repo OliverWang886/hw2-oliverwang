@@ -14,3 +14,9 @@ The system produces a structured list of action items, including the task, the o
 
 ## Why This Task Is Valuable
 This task is valuable because meeting notes are often messy, incomplete, and time-consuming to process manually. A GenAI system could save time by producing a first draft of action items that a human can review and edit.
+
+## Prototype Status
+The prototype successfully runs from the command line and makes a live Gemini API call to generate structured action items from meeting notes.
+
+## Video Link
+Unlisted YouTube video: [https://youtu.be/tJ7NHG8JTgs]
